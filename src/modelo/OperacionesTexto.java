@@ -54,7 +54,7 @@ public class OperacionesTexto {
     public String abrir() {
         String strgRetorno = "";
         JFileChooser fc = new JFileChooser();
-        fc.setCurrentDirectory(new File("C:\\Users\\vicjo\\Documents\\NetBeansProjects\\VicText\\DocumentosDeTexto"));
+        //fc.setCurrentDirectory(new File("C:\\Users\\vicjo\\Documents\\NetBeansProjects\\VicText\\DocumentosDeTexto"));
         int selec = fc.showOpenDialog(fc);
 
         try {
@@ -64,7 +64,6 @@ public class OperacionesTexto {
                 //SOLO VEO SI SIRVE SACAR LA RUTA
                 pathSelected = stf.getAbsolutePath();
 
-                //System.out.println("Ruta: " + stf.getAbsolutePath());
                 BufferedReader bf = new BufferedReader(new FileReader(stf.getAbsolutePath()));
                 String cadenaAyuda;
                 String cadenaPasarAFinal = "";

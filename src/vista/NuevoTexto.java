@@ -117,13 +117,13 @@ public class NuevoTexto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBtnCancelarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCancelarNuevoMouseClicked
-        objControlador.comprobadorVentanas(false);
+        objControlador.comprobadorVentanaNuevo(false);
         this.dispose();
     }//GEN-LAST:event_lblBtnCancelarNuevoMouseClicked
 
     private void lblBtnGuardarNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnGuardarNuevoMouseClicked
         JOptionPane.showMessageDialog(null, objControlador.guardarNuevoTexto(txtAreaTextoNuevo.getText(), JOptionPane.showInputDialog("Ingrese el título del archivo")));
-        objControlador.comprobadorVentanas(false);
+        objControlador.comprobadorVentanaNuevo(false);
         this.dispose();
     }//GEN-LAST:event_lblBtnGuardarNuevoMouseClicked
 

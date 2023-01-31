@@ -35,28 +35,29 @@ public class Controlador implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == frmp.getMenuItemNuevo()) {
-            try {
-                if (isOpenNuevo == false) {
-                    System.out.println("Cambiando comprobador a true");
-                    isOpenNuevo = true;
-                    this.objNuevoTexto = new NuevoTexto();
-                    System.out.println("Comprobador está en: " + isOpenNuevo);
-                    frmp.getEscritorio().add(objNuevoTexto);
-                    objNuevoTexto.setVisible(true);
 
-                } else if (isOpenNuevo == true) {
-                    System.out.println("Comprobador en la otra parte está en: " + isOpenNuevo);
-                    JOptionPane.showMessageDialog(null, "Ya hay uno abierto");
-                }
-            } catch (Exception exc) {
-                exc.printStackTrace();
+            if (isOpenNuevo == false) {
+                this.objNuevoTexto = new NuevoTexto();
+                isOpenNuevo = true;
+                frmp.getEscritorio().add(objNuevoTexto);
+                objNuevoTexto.setVisible(true);
+            } else if (isOpenNuevo == true) {
+                JOptionPane.showMessageDialog(null, "Ya hay uno abierto.");
             }
+
         }
 
         if (e.getSource() == frmp.getMenuItemAbrir()) {
-            this.objAbrir = new AbrirArchivoTexto();
-            frmp.getEscritorio().add(objAbrir);
-            objAbrir.setVisible(true);
+
+            if (isOpenAbrir == false) {
+                this.objAbrir = new AbrirArchivoTexto();
+                this.isOpenAbrir = true;
+                frmp.getEscritorio().add(objAbrir);
+                objAbrir.setVisible(true);
+            } else if (isOpenAbrir==true) {
+                JOptionPane.showMessageDialog(null, "Ya hay uno abierto.");
+            }
+
         }
 
     }
@@ -66,9 +67,12 @@ public class Controlador implements ActionListener {
         return retorno = objOperaciones.guardar(textoIr, tituloIr);
     }
 
-    public void comprobadorVentanas(boolean open) {
+    public void comprobadorVentanaNuevo(boolean open) {
         isOpenNuevo = false;
-        System.out.println("Comprobador final está en: " + isOpenNuevo);
+    }
+    
+    public void comprobadorVentanaAbrir(boolean open) {
+        isOpenAbrir = false;
     }
 
     public String abrirArchivo() {

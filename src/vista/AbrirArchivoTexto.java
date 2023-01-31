@@ -123,6 +123,7 @@ public class AbrirArchivoTexto extends javax.swing.JInternalFrame {
 
     private void lblBtnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnAceptarMouseClicked
         JOptionPane.showMessageDialog(null, objControlador.sobreescribiendo(txtAreaArchivoAbierto.getText()));
+        objControlador.comprobadorVentanaAbrir(false);
         this.dispose();
     }//GEN-LAST:event_lblBtnAceptarMouseClicked
 
@@ -137,7 +138,8 @@ public class AbrirArchivoTexto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lblBtnAceptarMouseExited
 
     private void lblBtnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCancelarMouseClicked
-
+        objControlador.comprobadorVentanaAbrir(false);
+        this.dispose();
     }//GEN-LAST:event_lblBtnCancelarMouseClicked
 
     private void lblBtnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCancelarMouseEntered
