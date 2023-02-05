@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 
 public class OperacionesTexto {
 
@@ -16,7 +17,19 @@ public class OperacionesTexto {
     public String guardar(String text, String titulo) {
         String retorno = "";
 
-        texto = new File("C:\\Users\\vicjo\\Documents\\NetBeansProjects\\VicText\\DocumentosDeTexto/" + titulo.trim() + ".txt");//Preparando el archivo
+        JFileChooser selectorDeArchivos = new JFileChooser();
+        selectorDeArchivos.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        selectorDeArchivos.setCurrentDirectory(FileSystemView.getFileSystemView().getHomeDirectory());
+
+        int selec = selectorDeArchivos.showOpenDialog(null);
+
+        if (selec == selectorDeArchivos.APPROVE_OPTION) {
+            File direccionIni = selectorDeArchivos.getSelectedFile();
+            String direccionFinal = direccionIni.getAbsolutePath();
+            texto = new File(direccionFinal +"/"+ titulo.trim() + ".txt");
+            System.out.println(texto.getAbsolutePath());
+        }
+        JOptionPane.showMessageDialog(null, "Hola sigue corriendo");
         if (!texto.exists()) {
             try {
                 texto.createNewFile();
@@ -86,14 +99,14 @@ public class OperacionesTexto {
         archivo = new File(pathSelected);  //Preparando el archivo
         try {
             if (archivo.exists()) {
-                escribir =new FileWriter(archivo, false); //False es para que sobreescriba todo, si pongo true, solo escribe al final del archivo ya existente
+                escribir = new FileWriter(archivo, false); //False es para que sobreescriba todo, si pongo true, solo escribe al final del archivo ya existente
                 BufferedWriter intermediario = new BufferedWriter(escribir);
                 linea = new PrintWriter(intermediario);
-                
+
                 linea.print(nuevoTexto);
                 linea.close();
                 escribir.close();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Aún no encuentro cuándo sale este error 1.");
             }
         } catch (IOException ex) {
